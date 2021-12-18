@@ -1,10 +1,12 @@
+import tkinter as tk
 from tkinter import *
 import pytube
 import re
 
 root = Tk()
 root.title("downloader")
-
+root.geometry("400x100")
+from tkinter import messagebox
 
 e = Entry(root, width=50)
 e.pack()
@@ -18,11 +20,7 @@ def downloadvid(link) :
 def isValidURL(str):
  
     # Regex to check valid URL
-    regex = ("((http|https)://)(www.youtube)?" +
-             "[a-zA-Z0-9@:%._\\+~#?&//=]" +
-             "{2,256}\\.[a-z]" +
-             "{2,6}\\b([-a-zA-Z0-9@:%" +
-             "._\\+~#?&//=]*)")
+    regex = ("^(https?\:\/\/)?((www\.)?youtube\.com|youtu\.be)\/.+$")
      
     # Compile the ReGex
     p = re.compile(regex)
@@ -45,17 +43,20 @@ def myClick() :
     if validity== True:
         downloadvid(current)
         print("myclick function trigered")
-        result="video downloading"
         return True
     else:
         print("non youtube url")
-        result="non youtube url"
+        
+        #messagebox.showerror('invalid url!')
+        msg = Message(root, text = "invalid url") 
+        msg.pack()
         return False
 
 
 
 myButton = Button(root,text="enter url",command=myClick)
 myButton.pack()
+
 
 
 root.mainloop()
