@@ -18,10 +18,15 @@ class MainWindow(tk.Tk):
         self.update()
 
     def openFile(self):
-        fileName = tk.filedialog.askopenfilename(filetypes=[("MP3 Files", "*.mp3"), ("All Files", "*")])
-        if fileName:
-            self.player.music.load(fileName)
-            self.duration = self.player.Sound(fileName).get_length()
+        try:
+            fileName = tk.filedialog.askopenfilename(filetypes=[("MP3 Files", "*.mp3"), ("All Files", "*")])
+            if fileName:
+                self.player.music.load(fileName)
+                self.duration = self.player.Sound(fileName).get_length()
+        except Exception as e:
+            # Handle the exception here
+            print(e)
+            tk.messagebox.showerror("Error", "An error occurred while opening the file")
 
     def addButtons(self):
         self.startButton = tk.Button(self, text="Start", command=self.start)
