@@ -2,11 +2,10 @@ import socket
 import ipaddress
 
 
-#ipAddress   = "127.0.0.1";
 ip_list=["192.168.0.1", "192.168.0.2", "192.168.0.3","192.168.0.4","192.168.0.5","192.168.0.10"]
 ip_list.sort()
 print("sorted bin list is: ", ip_list)
-#ip_list_b=[socket.inet_aton(ip) for ip in ip_list]
+
 ip_objects =[ipaddress.IPv4Address(ip) for ip in ip_list]
 print("ip objects",ip_objects)
 binary_list  = ['{:#b}'.format(ipaddress.IPv4Address(ip)) for ip in ip_list]
