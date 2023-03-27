@@ -13,8 +13,7 @@ binary_representation_list = []
 for ip in binary_list:
     binary_representation = ip[2:]
     binary_representation_list.append(binary_representation)
-    
-print("binary respresentation of the list is: ", binary_representation_list)
+    print("binary respresentation of the list is: ", binary_representation_list)
 # Find the largest prefix length that will accommodate all the IP addresses
 result = int(binary_representation_list[-1], 2) ^ int(binary_representation_list[0], 2)
 result_binary = bin(result)[2:]
